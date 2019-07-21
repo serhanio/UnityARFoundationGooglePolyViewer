@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DD_Asset_Menu_Screen_Override
+  m_Controller: {fileID: 9100000, guid: 977d17481a1c246148cfbf0b3e030413, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e25819ac688b749748fb7ea4a0ebd9eb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e25819ac688b749748fb7ea4a0ebd9eb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5101cd108c0ad48e987492267a28e2d9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5101cd108c0ad48e987492267a28e2d9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: feb8155b06b734ee5ad576c10a44e7a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: feb8155b06b734ee5ad576c10a44e7a2, type: 2}

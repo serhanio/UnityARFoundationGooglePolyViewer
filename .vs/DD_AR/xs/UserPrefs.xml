@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{A5E39849-4417-B82C-7DF5-AF63466E3649}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DD_PolyAR.cs">
+    <Files>
+      <File FileName="Assets/Scripts/DD_PolyAR.cs" Line="118" Column="18" />
+      <File FileName="Assets/PolyToolkit/Scripts/PolyApi.cs" Line="269" Column="22" />
+      <File FileName="Assets/Scripts/UI_Scripts/DD_UI_System.cs" Line="22" Column="45" />
+      <File FileName="Assets/Scripts/UI_Scripts/DD_UI_Screen.cs" Line="63" Column="11" />
+      <File FileName="Assets/PolyToolkit/Internal/api_clients/poly_client/PolyClient.cs" Line="197" Column="59" />
+      <File FileName="Assets/Shaders/SpriteGradient.shader" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/Thirdparty/ARFoundation Demo Assets/Demo/ARTapToPlaceObject.cs" Line="36" Column="33" NotebookId="1" />
+      <File FileName="Library/PackageCache/com.unity.xr.arfoundation@1.5.0-preview.5/Runtime/AR/ARRaycastManager.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/UI_System/UI_ScreenTypes/DD_Timed_UI_Screen.cs" Line="32" Column="6" NotebookId="1" />
+      <File FileName="Assets/Scripts/SceneObjectManager.cs" Line="25" Column="6" NotebookId="1" />
+      <File FileName="Assets/UI_System/UI_ScreenTypes/DD_Asset_Menu_UI_Screen.cs" Line="118" Column="30" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
