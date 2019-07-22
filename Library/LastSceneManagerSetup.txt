@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/DD_ARFoundation_GooglePoly.unity
-  isLoaded: 1
-  isActive: 1
