@@ -28,6 +28,7 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
     public GameObject camera_screen;
 
     public Vector2 panelSize;
+    public RectTransform container;
 
     GameObject parent;
     #endregion
@@ -37,9 +38,10 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
     public void Awake()
     {
         parent = GameObject.FindWithTag("asset_panels");
+        container = parent.GetComponent<RectTransform>();
 
         panelSize = new Vector2(assets_panel_prefab.GetComponent<RectTransform>().sizeDelta.x, assets_panel_prefab.GetComponent<RectTransform>().sizeDelta.y);
-
+        Debug.Log("Panel Size " + panelSize.ToString());
         search_button.onClick.AddListener(SearchButtonQuery);
     }
 
@@ -48,8 +50,9 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
         ClearPanels();
 
         int search_result_count = poly_api.asset_id_name_list.Count;
+        container.sizeDelta = new Vector2(container.sizeDelta.x, (panelSize.y * search_result_count) + (panelSize.y/2.0f));
 
-        for(int i = 0; i < search_result_count; i++)
+        for (int i = 0; i < search_result_count; i++)
         {
             // instantiate a panel
             GameObject panel = Instantiate(assets_panel_prefab);
@@ -63,10 +66,13 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
 
             asset_panel_buttons[i].onClick.AddListener(ImportAssetOnClick);
 
+            //container size
+            float init_y_pos = (container.sizeDelta.y / 2.0f) - (panelSize.y * i);
+
             // offset the panel by y amount
-            float offset = 387.0f;
+            float offset = panelSize.y;
             Vector2 screenSz = new Vector2(Screen.width, Screen.height);
-            panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (screenSz.y - (panelSize.y * i)) - offset);
+            panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, init_y_pos - offset);
             //panel.GetComponent<RectTransform>().position = new Vector3(0, 1 * panelSize.y, 0);
 
             // content
@@ -137,5 +143,6 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
             this.gameObject.GetComponent<CanvasGroup>().interactable = false;
         }
     }
+
     #endregion
 }

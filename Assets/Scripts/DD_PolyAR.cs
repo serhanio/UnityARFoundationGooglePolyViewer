@@ -15,7 +15,7 @@ public class DD_PolyAR : MonoBehaviour {
     [SerializeField] public List<KeyValuePair<string, string>> asset_id_name_list;
     [SerializeField] public List<KeyValuePair<string, Texture2D>> asset_thumbnail_list;
     [SerializeField] Transform m_cameraTransform; 
-    int resultCount = 8;
+    int resultCount = 20;
     Texture2D texture;
     public GameObject importedObject;
     [SerializeField] ARTapToPlaceObject ar_tap_to_place_object;
@@ -196,7 +196,7 @@ public class DD_PolyAR : MonoBehaviour {
         // Order from best to worst.
         req.orderBy = PolyOrderBy.BEST;
         // Up to 20 results per page.
-        req.pageSize = 8;
+        req.pageSize = 20;
         // Send the request.
         PolyApi.ListAssets(req, SearchAssetListCallback);
     }
