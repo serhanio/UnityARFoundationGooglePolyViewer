@@ -24,6 +24,7 @@ public class DD_PolyAR : MonoBehaviour {
     public UnityEvent onPolyThumbLoaded = new UnityEvent();
     public UnityEvent onAssetImported = new UnityEvent();
     public string[] display_names;
+    public string featured_artist_name;
     /* [SerializeField] ObjectControls objectManager; */
     #endregion
 
@@ -155,20 +156,23 @@ public class DD_PolyAR : MonoBehaviour {
         // slowly rotate:
         Vector3 objPosition = m_cameraTransform.position + (m_cameraTransform.forward.normalized * 0.75f); //place sphere 10cm in front of device
         result.Value.gameObject.transform.position = objPosition;
-        //ar_tap_to_place_object.loadedObj = result.Value.gameObject;
+
         importedObject = result.Value.gameObject;
+
+        featured_artist_name = asset.authorName;
 
         if (onAssetImported != null)
         {
             onAssetImported.Invoke();
         }
+
+        Debug.Log("Featured Artist: " + asset.authorName);
+        Debug.Log("Description: " + asset.description);
         //result.Value.gameObject.AddComponent<Rotate>();
         /*for (int i = 0; i < result.Value.gameObject.transform.childCount; i++)
         {
             result.Value.gameObject.transform.GetChild(i).gameObject.AddComponent<MeshCollider>();
         }*/
-
-        // arHit.SetTransformSelection(result.Value.gameObject.transform);
 
         /*if(objectManager.worldCanvas != null)
             Destroy(objectManager.worldCanvas);*/

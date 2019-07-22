@@ -412,6 +412,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   display_names: []
+  featured_artist_name: 
   searchKeyword: tree
 --- !u!4 &740352608
 Transform:
@@ -768,12 +769,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1711269084 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1482225831095659566, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1482225830613649650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1873770712
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,11 +853,6 @@ PrefabInstance:
       propertyPath: ui_system
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: camera_screen
-      value: 
-      objectReference: {fileID: 1711269084}
     - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: asset_panels.Array.data[0]
@@ -1003,6 +993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200297097669093299, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Featured Artist:'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3, type: 3}

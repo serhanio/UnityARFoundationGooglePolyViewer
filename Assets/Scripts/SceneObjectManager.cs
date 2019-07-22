@@ -27,14 +27,27 @@ public class SceneObjectManager : MonoBehaviour
 
     public void AddObjectToScene()
     {
+        RemoveObjectFromScene(currObj);
+
         SetSelectedObject(google_poly_api.importedObject);
         objectsInScene.Add( currObj );
     }
 
     public void RemoveObjectFromScene(GameObject obj)
     {
-        currObj = null;
-        objectsInScene.Remove(obj);
+        if (currObj)
+        {
+            if (currObj == pivot.gameObject)
+            {
+                for (int i = 0; i < pivot.childCount; i++)
+                {
+                    Destroy(pivot.GetChild(i).gameObject);
+                }
+            }
+
+            currObj = null;
+            objectsInScene.Remove(obj);
+        }
     }
 
     public void SetSelectedObject(GameObject obj)

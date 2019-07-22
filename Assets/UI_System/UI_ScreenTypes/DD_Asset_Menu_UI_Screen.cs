@@ -18,6 +18,7 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
     public List<Button> asset_panel_buttons;
     public List<Image> asset_panel_images;
     public List<Text> asset_panel_title;
+    public Text featured_artist_text;
 
 
     public Button search_button, assets_menu_button;
@@ -43,6 +44,8 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
         panelSize = new Vector2(assets_panel_prefab.GetComponent<RectTransform>().sizeDelta.x, assets_panel_prefab.GetComponent<RectTransform>().sizeDelta.y);
         Debug.Log("Panel Size " + panelSize.ToString());
         search_button.onClick.AddListener(SearchButtonQuery);
+
+        poly_api.onAssetImported.AddListener(SetFeaturedArtistText);
     }
 
     public void InstantiatePanels()
@@ -142,6 +145,11 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
             this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
             this.gameObject.GetComponent<CanvasGroup>().interactable = false;
         }
+    }
+
+    void SetFeaturedArtistText()
+    {
+        featured_artist_text.text = "Featured Artst: " + poly_api.featured_artist_name;
     }
 
     #endregion
