@@ -25,6 +25,7 @@ public class DD_PolyAR : MonoBehaviour {
     public UnityEvent onAssetImported = new UnityEvent();
     public string[] display_names;
     public string featured_artist_name;
+    public float distMultiplier = 1.5f;
     /* [SerializeField] ObjectControls objectManager; */
     #endregion
 
@@ -154,7 +155,13 @@ public class DD_PolyAR : MonoBehaviour {
         // Here, you would place your object where you want it in your scene, and add any
         // behaviors to it as needed by your app. As an example, let's just make it
         // slowly rotate:
-        Vector3 objPosition = m_cameraTransform.position + (m_cameraTransform.forward.normalized * 0.75f); //place sphere 10cm in front of device
+        float h = result.Value.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.extents.y;
+        float fov = Camera.main.fieldOfView;
+        float angle = Mathf.Deg2Rad * (fov / 2);
+        float dist = h / Mathf.Atan(angle);
+        Debug.Log("Distance " + dist);
+
+        Vector3 objPosition = m_cameraTransform.position + (m_cameraTransform.forward.normalized * dist * distMultiplier); //place sphere 10cm in front of device
         result.Value.gameObject.transform.position = objPosition;
 
         importedObject = result.Value.gameObject;
