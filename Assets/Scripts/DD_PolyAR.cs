@@ -171,6 +171,8 @@ public class DD_PolyAR : MonoBehaviour {
         result.Value.gameObject.transform.position = objPosition;
 
         importedObject = result.Value.gameObject;
+        importedObject.transform.LookAt(Camera.main.transform);
+        importedObject.transform.eulerAngles = new Vector3(importedObject.transform.eulerAngles.x, importedObject.transform.eulerAngles.y + 180f, importedObject.transform.eulerAngles.z);
 
         featured_artist_name = asset.authorName;
 

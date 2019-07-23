@@ -413,6 +413,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   display_names: []
   featured_artist_name: 
+  distMultiplier: 1.25
   searchKeyword: tree
 --- !u!4 &740352608
 Transform:
