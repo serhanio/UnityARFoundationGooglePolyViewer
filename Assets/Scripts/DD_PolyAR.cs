@@ -156,6 +156,12 @@ public class DD_PolyAR : MonoBehaviour {
         // behaviors to it as needed by your app. As an example, let's just make it
         // slowly rotate:
         float h = result.Value.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.extents.y;
+        for (int i = 0; i < result.Value.gameObject.transform.childCount; i++)
+        {
+            if (result.Value.gameObject.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y > h)
+                h = result.Value.gameObject.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y;
+        }
+
         float fov = Camera.main.fieldOfView;
         float angle = Mathf.Deg2Rad * (fov / 2);
         float dist = h / Mathf.Atan(angle);
