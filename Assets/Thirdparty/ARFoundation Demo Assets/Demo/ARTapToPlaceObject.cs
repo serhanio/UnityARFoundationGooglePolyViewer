@@ -5,6 +5,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
 using System;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     public Text debugText;
     public GameObject loadedObj;
+
+    bool isTouchOverUI = false;
 
 
 
@@ -33,11 +36,28 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if(placementPoseIsValid && Input.touchCount > 0 /*&& Input.GetTouch(0).phase == TouchPhase.Began*/)
+        // Check if there is a touch
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            // Check if finger is over a UI element
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                Debug.Log("Touched the UI");
+                isTouchOverUI = true;
+            }
+            else
+            {
+                isTouchOverUI = false;
+            }
+        }
+
+        if (placementPoseIsValid && Input.touchCount > 0 /*&& Input.GetTouch(0).phase == TouchPhase.Began*/)
          {
             // PlaceObject();
-            if(loadedObj != null)
-                loadedObj.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+            if (loadedObj != null && !isTouchOverUI)
+            {
+                loadedObj.transform.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+            }
         }
     }
 
