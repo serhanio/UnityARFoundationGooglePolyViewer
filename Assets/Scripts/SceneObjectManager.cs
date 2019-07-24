@@ -66,8 +66,11 @@ public class SceneObjectManager : MonoBehaviour
 
         float yOffset = GetTallestMeshBounds();
         pivot.transform.position = new Vector3(currObj.transform.position.x, currObj.transform.position.y - yOffset, currObj.transform.position.z);
+
+        pivot.transform.LookAt(Camera.main.transform);
+        pivot.transform.eulerAngles = new Vector3(0, pivot.transform.eulerAngles.y + 180f, 0);
+
         currObj.transform.SetParent(pivot);
-        currObj.transform.eulerAngles = Vector3.zero;
         currObj = pivot.gameObject;
     }
 
