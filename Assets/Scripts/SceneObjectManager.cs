@@ -148,4 +148,26 @@ public class SceneObjectManager : MonoBehaviour
         Touch touchOne = Input.GetTouch(idx2);
         return (touchOne.position - touchZero.position).magnitude;
     }
+
+    public Color gizmoColor = Color.yellow;
+
+    void OnDrawGizmos()
+    {
+        // Draw a yellow cube at the transform's position
+        Gizmos.color = gizmoColor;
+        if (pivot != null && pivot.transform.childCount > 0)
+        {
+            if(pivot.GetChild(0).GetChild(0) != null)
+                Gizmos.DrawWireCube(pivot.GetChild(0).position, GetBoundSize(pivot.GetChild(0).GetChild(0)));
+        }
+    }
+
+    public Vector3 GetBoundSize(Transform t)
+    {
+        Vector3 m_Size;
+        Bounds bounds = t.GetComponent<MeshRenderer>().bounds;
+        m_Size = bounds.size;
+        Debug.Log(m_Size);
+        return m_Size;
+    }
 }
