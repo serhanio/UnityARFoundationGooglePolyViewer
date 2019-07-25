@@ -193,6 +193,7 @@ MonoBehaviour:
   objectsInScene: []
   arTap: {fileID: 0}
   google_poly_api: {fileID: 0}
+  gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!4 &108598524
 Transform:
   m_ObjectHideFlags: 0
@@ -999,6 +1000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: 'Featured Artist:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482225831502287880, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3, type: 3}

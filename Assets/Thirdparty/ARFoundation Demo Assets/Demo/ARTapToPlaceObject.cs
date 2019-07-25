@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
-    public GameObject objectToPlace;
+    //public GameObject objectToPlace;
     public GameObject placementIndicator;
     private ARSessionOrigin arOrigin;
     public ARRaycastManager arRaycastManager;
@@ -52,15 +52,17 @@ public class ARTapToPlaceObject : MonoBehaviour
                 {
                     touchPose = hits[0].pose;
                     loadedObj.transform.position = touchPose.position;
+                    loadedObj.transform.LookAt(Camera.main.transform);
+                    loadedObj.transform.eulerAngles = new Vector3(0, loadedObj.transform.eulerAngles.y + 180f, 0);
                 }
             }
         }
     }
 
-    private void PlaceObject()
+   /* private void PlaceObject()
     {
         Instantiate(objectToPlace, placementPose.position, placementPose.rotation);
-    }
+    } */
 
     private void UpdatePlacementIndicator()
     {
