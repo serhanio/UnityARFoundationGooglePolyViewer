@@ -17,10 +17,12 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Pose placementPose;
     private bool placementPoseIsValid = false;
 
+    private Pose touchPose;
+    private bool touchPoseIsValid = false;
+    private bool isTouchOverUI = false;
+
     public Text debugText;
     public GameObject loadedObj;
-
-    bool isTouchOverUI = false;
 
 
 
@@ -36,12 +38,21 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if (placementPoseIsValid && Input.touchCount > 0 && loadedObj != null /*&& Input.GetTouch(0).phase == TouchPhase.Began*/)
+        if (/*placementPoseIsValid &&*/ Input.touchCount > 0 && loadedObj != null /*&& Input.GetTouch(0).phase == TouchPhase.Began*/)
          {
             // PlaceObject();
             if (!IsPointerOverUIObject())
             {
-                loadedObj.transform.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+                // ARRaycast from touch position
+                var hits = new List<ARRaycastHit>();
+                arRaycastManager.Raycast(Input.touches[0].position, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
+                touchPoseIsValid = (hits.Count > 0);
+
+                if(touchPoseIsValid)
+                {
+                    touchPose = hits[0].pose;
+                    loadedObj.transform.position = touchPose.position;
+                }
             }
         }
     }
