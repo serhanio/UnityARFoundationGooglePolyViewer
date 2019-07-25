@@ -149,7 +149,7 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
 
     void SetFeaturedArtistText()
     {
-        featured_artist_text.text = "Featured Artist: " + poly_api.featured_artist_name;
+        featured_artist_text.text = "Artist: " + poly_api.featured_artist_name;
     }
 
     #endregion

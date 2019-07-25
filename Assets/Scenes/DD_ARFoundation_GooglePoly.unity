@@ -141,8 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25058a856f741473c999cb20432881cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPlace: {fileID: 7498044107987252585, guid: 25bd075cacb364331ad02cc20d1299e3,
-    type: 3}
   placementIndicator: {fileID: 426706276}
   arRaycastManager: {fileID: 1260358314}
   debugText: {fileID: 0}
@@ -998,9 +996,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4200297097669093299, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
-      propertyPath: m_Text
-      value: 'Featured Artist:'
-      objectReference: {fileID: 0}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 3e88418fbb3454eaeb8c7a8cdf7cac19,
+        type: 3}
     - target: {fileID: 1482225831502287880, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: m_Color.a
