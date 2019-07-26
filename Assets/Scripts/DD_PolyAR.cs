@@ -158,8 +158,11 @@ public class DD_PolyAR : MonoBehaviour {
         float h = result.Value.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.extents.y;
         for (int i = 0; i < result.Value.gameObject.transform.childCount; i++)
         {
-            if (result.Value.gameObject.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y > h)
-                h = result.Value.gameObject.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y;
+            if (result.Value.gameObject.transform.GetChild(i).GetComponent<MeshRenderer>() != null)
+            {
+                if (result.Value.gameObject.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y > h)
+                    h = result.Value.gameObject.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y;
+            }
         }
 
         float fov = Camera.main.fieldOfView;

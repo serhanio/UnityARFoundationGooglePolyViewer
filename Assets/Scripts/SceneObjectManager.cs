@@ -80,8 +80,11 @@ public class SceneObjectManager : MonoBehaviour
 
         for (int i = 0; i < currObj.transform.childCount; i++)
         {
-            if (currObj.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y > yBounds)
-                yBounds = currObj.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y;
+            if (currObj.transform.GetChild(i).GetComponent<MeshRenderer>() != null)
+            {
+                if (currObj.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y > yBounds)
+                    yBounds = currObj.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y;
+            }
         }
 
         return yBounds;
