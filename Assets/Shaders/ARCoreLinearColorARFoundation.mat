@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ARCoreLinearColorARFoundation
-  m_Shader: {fileID: 4800000, guid: 57c2c07a0719d4fafab7a4f8a84d1767, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3febd4e0c09638d46a06b4663ab5adc3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -68,6 +68,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Gamma: 2.2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -83,3 +84,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _UvBottomLeftRight: {r: 0, g: 0, b: 1, a: 0}
+    - _UvTopLeftRight: {r: 0, g: 1, b: 1, a: 1}
