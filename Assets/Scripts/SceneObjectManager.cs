@@ -26,7 +26,7 @@ public class SceneObjectManager : MonoBehaviour
     public static bool touchPoseIsValid = false;
     private static bool isTouchOverUI = false;
 
-    public UnityEvent onObjectAdded = new UnityEvent();
+    public UnityEvent onObjectSelected = new UnityEvent();
     public UnityEvent onObjectRemoved = new UnityEvent();
     #endregion
 
@@ -47,11 +47,6 @@ public class SceneObjectManager : MonoBehaviour
 
         SetSelectedObject(google_poly_api.importedObject);
         objectsInScene.Add( currObj );
-
-        if (onObjectAdded != null)
-        {
-            onObjectAdded.Invoke();
-        }
     }
 
     public void RemoveObjectFromScene(GameObject obj)
@@ -81,6 +76,11 @@ public class SceneObjectManager : MonoBehaviour
         currObj = obj;
         SetObjectPivot();
         arTap.loadedObj = currObj;
+
+        if (onObjectSelected != null)
+        {
+            onObjectSelected.Invoke();
+        }
     }
 
     void SetObjectPivot()

@@ -192,7 +192,7 @@ MonoBehaviour:
   arTap: {fileID: 0}
   google_poly_api: {fileID: 0}
   arRaycastManager: {fileID: 0}
-  onObjectAdded:
+  onObjectSelected:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1053449504}
@@ -887,6 +887,47 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1482225830340372130, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349552410596199944, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Name
+      value: delete_button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349552410596199944, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: asset_panels.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: poly_api
+      value: 
+      objectReference: {fileID: 740352607}
+    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: ui_system
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: asset_panels.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: assets_panel_prefab
+      value: 
+      objectReference: {fileID: 5083784140007111849, guid: 4ceb2240cfab94a9da9265b01bbdc0a2,
+        type: 3}
     - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -943,47 +984,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1349552410596199944, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: m_Name
-      value: delete_button
-      objectReference: {fileID: 0}
-    - target: {fileID: 1349552410596199944, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1482225830340372130, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: asset_panels.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: poly_api
-      value: 
-      objectReference: {fileID: 740352607}
-    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: ui_system
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: asset_panels.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1482225831893112127, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
-        type: 3}
-      propertyPath: assets_panel_prefab
-      value: 
-      objectReference: {fileID: 5083784140007111849, guid: 4ceb2240cfab94a9da9265b01bbdc0a2,
-        type: 3}
     - target: {fileID: 1482225830340372134, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: m_LocalPosition.x
