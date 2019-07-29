@@ -21,6 +21,13 @@ public class DragOnTouchAR : MonoBehaviour
 
             // set current gameObject to drag
             Debug.Log("Current GameObject " + SceneObjectManager.currObj.name);
+            Debug.Log("Parent GameObject " + GetRootGameObject(this.transform.gameObject).transform.name);
+
+            if (SceneObjectManager.currObj != GetRootGameObject(this.transform.gameObject))
+            {
+                // set selected object
+                objectManager.SetSelectedObject(GetRootGameObject(this.transform.gameObject));
+            }
 
             if (SceneObjectManager.touchPoseIsValid)
             {
@@ -29,6 +36,20 @@ public class DragOnTouchAR : MonoBehaviour
                 SceneObjectManager.currObj.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y + 180f, 0);
             }
         }
+    }
+
+    GameObject GetRootGameObject(GameObject go)
+    {
+       /* if (go.transform.parent == null)
+            return go;*/
+
+        // while parent exists
+        while(go.transform.parent != null)
+        {
+            go = go.transform.parent.gameObject;
+        }
+
+        return go;
     }
 
 }

@@ -39,7 +39,7 @@ public class SceneObjectManager : MonoBehaviour
 
     public void AddObjectToScene()
     {
-        RemoveObjectFromScene(currObj);
+        //RemoveObjectFromScene(currObj);
 
         SetSelectedObject(google_poly_api.importedObject);
         objectsInScene.Add( currObj );
@@ -71,10 +71,11 @@ public class SceneObjectManager : MonoBehaviour
 
     void SetObjectPivot()
     {
-        if (pivot.transform.childCount > 0)
+        /*if (pivot.transform.childCount > 0)
         {
             pivot.GetChild(0).parent = null;
-        }
+        }*/
+        Unpivot();
 
         float yOffset = GetTallestMeshBounds();
         pivot.transform.position = new Vector3(currObj.transform.position.x, currObj.transform.position.y - yOffset, currObj.transform.position.z);
@@ -84,6 +85,17 @@ public class SceneObjectManager : MonoBehaviour
 
         currObj.transform.SetParent(pivot);
         currObj = pivot.gameObject;
+    }
+
+    public void Unpivot()
+    {
+        if(pivot.childCount > 0)
+        {
+            for(int i = 0; i < pivot.childCount; i++)
+            {
+                pivot.transform.GetChild(i).parent = null;
+            }
+        }
     }
 
     float GetTallestMeshBounds()
@@ -103,12 +115,16 @@ public class SceneObjectManager : MonoBehaviour
             }
         }
 
-        // give tallest object a collider
-        GameObject tallestObj = currObj.transform.GetChild(tallestIndex).gameObject;
-        tallestObj.AddComponent<BoxCollider>();
-        tallestObj.AddComponent<DragOnTouchAR>();
-        
-        Debug.Log("ADDED BOX COLLIDER TO CHILD INDEX " + tallestIndex);
+        // if first time adding GameObject to scene
+        if (currObj.transform.GetChild(tallestIndex).transform.GetComponent<BoxCollider>() == null)
+        {
+            // give tallest object a collider
+            GameObject tallestObj = currObj.transform.GetChild(tallestIndex).gameObject;
+            tallestObj.AddComponent<BoxCollider>();
+            tallestObj.AddComponent<DragOnTouchAR>();
+
+            Debug.Log("ADDED BOX COLLIDER TO CHILD INDEX " + tallestIndex);
+        }
 
         return yBounds;
     }
