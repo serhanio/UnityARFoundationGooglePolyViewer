@@ -21,7 +21,7 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
     public Text featured_artist_text;
 
 
-    public Button search_button, assets_menu_button;
+    public Button search_button, assets_menu_button, delete_button;
     public InputField search_input_field;
 
     public DD_PolyAR poly_api;
@@ -32,6 +32,8 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
     public RectTransform container;
 
     GameObject parent;
+
+    SceneObjectManager objectManager;
     #endregion
 
     #region Helper Methods
@@ -46,6 +48,9 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
         search_button.onClick.AddListener(SearchButtonQuery);
 
         poly_api.onAssetImported.AddListener(SetFeaturedArtistText);
+
+        objectManager = FindObjectOfType<SceneObjectManager>();
+        delete_button.onClick.AddListener(delegate { objectManager.RemoveObjectFromScene(SceneObjectManager.currObj); } );
     }
 
     public void InstantiatePanels()

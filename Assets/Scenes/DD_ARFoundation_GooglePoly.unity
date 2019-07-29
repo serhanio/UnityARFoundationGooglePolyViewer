@@ -191,6 +191,39 @@ MonoBehaviour:
   objectsInScene: []
   arTap: {fileID: 0}
   google_poly_api: {fileID: 0}
+  arRaycastManager: {fileID: 0}
+  onObjectAdded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1053449504}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onObjectRemoved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1053449504}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!4 &108598524
 Transform:
@@ -506,6 +539,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1053449504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1349552410596199944, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1482225830613649650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1226297529
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,6 +887,72 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 108598523}
+    - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveObjectFromScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758353612085411945, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758353612085411945, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9001a3680eb84b819723a101fa56bcf,
+        type: 3}
+    - target: {fileID: 8344218046007983563, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344218046007983563, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344218046007983563, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349552410596199944, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Name
+      value: delete_button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349552410596199944, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1482225830340372130, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: m_Name
@@ -1024,6 +1129,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482225831095659565, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3, type: 3}

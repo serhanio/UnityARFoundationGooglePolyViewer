@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class SceneObjectManager : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class SceneObjectManager : MonoBehaviour
     public static Vector3 touchPos = Vector3.zero;
     public static bool touchPoseIsValid = false;
     private static bool isTouchOverUI = false;
+
+    public UnityEvent onObjectAdded = new UnityEvent();
+    public UnityEvent onObjectRemoved = new UnityEvent();
     #endregion
 
     private void Start()
@@ -43,6 +47,11 @@ public class SceneObjectManager : MonoBehaviour
 
         SetSelectedObject(google_poly_api.importedObject);
         objectsInScene.Add( currObj );
+
+        if (onObjectAdded != null)
+        {
+            onObjectAdded.Invoke();
+        }
     }
 
     public void RemoveObjectFromScene(GameObject obj)
@@ -59,6 +68,11 @@ public class SceneObjectManager : MonoBehaviour
 
             currObj = null;
             objectsInScene.Remove(obj);
+
+            if(onObjectRemoved != null)
+            {
+                onObjectRemoved.Invoke();
+            }
         }
     }
 

@@ -20,6 +20,7 @@ public class DragOnTouchAR : MonoBehaviour
             Debug.Log("Dragging object " + this.transform.parent.name);
 
             // set current gameObject to drag
+            if(SceneObjectManager.currObj)
             Debug.Log("Current GameObject " + SceneObjectManager.currObj.name);
             Debug.Log("Parent GameObject " + GetRootGameObject(this.transform.gameObject).transform.name);
 
