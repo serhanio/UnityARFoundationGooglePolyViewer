@@ -7,7 +7,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ARTapToPlaceObject : MonoBehaviour
+public class ARPlacementIndicator : MonoBehaviour
 {
     //public GameObject objectToPlace;
     public GameObject placementIndicator;
@@ -16,10 +16,6 @@ public class ARTapToPlaceObject : MonoBehaviour
     ARSession arSession;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
-
-    private Pose touchPose;
-    private bool touchPoseIsValid = false;
-    private bool isTouchOverUI = false;
 
     public Text debugText;
     public GameObject loadedObj;
@@ -38,25 +34,6 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if (/*placementPoseIsValid &&*/ Input.touchCount > 0 && loadedObj != null /*&& Input.GetTouch(0).phase == TouchPhase.Began*/)
-         {
-            // PlaceObject();
-            if (!IsPointerOverUIObject())
-            {
-                // ARRaycast from touch position
-                var hits = new List<ARRaycastHit>();
-                arRaycastManager.Raycast(Input.touches[0].position, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
-                touchPoseIsValid = (hits.Count > 0);
-
-                if(touchPoseIsValid)
-                {
-                    touchPose = hits[0].pose;
-                    loadedObj.transform.position = touchPose.position;
-                    loadedObj.transform.LookAt(Camera.main.transform);
-                    loadedObj.transform.eulerAngles = new Vector3(0, loadedObj.transform.eulerAngles.y + 180f, 0);
-                }
-            }
-        }
     }
 
    /* private void PlaceObject()
@@ -99,28 +76,4 @@ public class ARTapToPlaceObject : MonoBehaviour
             debugText.text = placementPoseIsValid.ToString() + " | " + hits.Count;
     }
 
-    public void SetCurrentlySelectedObject(GameObject obj)
-    {
-        loadedObj = obj;
-    }
-
-    bool IsPointerOverUIObject()
-    {
-        // Check if there is a touch
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            // Check if finger is over a UI element
-            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            {
-                Debug.Log("Touched the UI");
-                isTouchOverUI = true;
-            }
-            else
-            {
-                isTouchOverUI = false;
-            }
-        }
-
-        return isTouchOverUI;
-    }
 }

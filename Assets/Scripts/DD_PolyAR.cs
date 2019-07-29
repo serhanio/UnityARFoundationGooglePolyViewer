@@ -18,7 +18,7 @@ public class DD_PolyAR : MonoBehaviour {
     int resultCount = 20;
     Texture2D texture;
     public GameObject importedObject;
-    [SerializeField] ARTapToPlaceObject ar_tap_to_place_object;
+    [SerializeField] ARPlacementIndicator ar_tap_to_place_object;
     [Header("Unity Events")]
     public UnityEvent onPolyAssetsLoaded = new UnityEvent();
     public UnityEvent onPolyThumbLoaded = new UnityEvent();

@@ -1,28 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.Experimental.XR;
+using UnityEngine.EventSystems;
 
 public class SceneObjectManager : MonoBehaviour
 {
-    GameObject currObj;
+    public static GameObject currObj;
     public List<GameObject> objectsInScene;
-    public ARTapToPlaceObject arTap;
+    public ARPlacementIndicator arTap;
     public DD_PolyAR google_poly_api;
     Transform pivot;
+
+    public ARRaycastManager arRaycastManager;
 
     #region variables for object controls
     // used in scaling & rotation calculation 
     float startDistance = 0.0f;
     Vector3 currentScale;
+
+    private Pose touchPose;
+    public static Vector3 touchPos = Vector3.zero;
+    public static bool touchPoseIsValid = false;
+    private static bool isTouchOverUI = false;
     #endregion
 
     private void Start()
     {
-        arTap = FindObjectOfType<ARTapToPlaceObject>();
+        arTap = FindObjectOfType<ARPlacementIndicator>();
         google_poly_api = FindObjectOfType<DD_PolyAR>();
 
         pivot = new GameObject().transform;
         pivot.name = "pivot";
+
+        arRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
 
     public void AddObjectToScene()
@@ -77,15 +89,26 @@ public class SceneObjectManager : MonoBehaviour
     float GetTallestMeshBounds()
     {
         float yBounds = currObj.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.extents.y;
+        int tallestIndex = 0;
 
         for (int i = 0; i < currObj.transform.childCount; i++)
         {
             if (currObj.transform.GetChild(i).GetComponent<MeshRenderer>() != null)
             {
                 if (currObj.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y > yBounds)
+                {
                     yBounds = currObj.transform.GetChild(i).GetComponent<MeshRenderer>().bounds.extents.y;
+                    tallestIndex = i;
+                }
             }
         }
+
+        // give tallest object a collider
+        GameObject tallestObj = currObj.transform.GetChild(tallestIndex).gameObject;
+        tallestObj.AddComponent<BoxCollider>();
+        tallestObj.AddComponent<DragOnTouchAR>();
+        
+        Debug.Log("ADDED BOX COLLIDER TO CHILD INDEX " + tallestIndex);
 
         return yBounds;
     }
@@ -94,7 +117,10 @@ public class SceneObjectManager : MonoBehaviour
     private void Update()
     {
         if(currObj != null)
+        {
             ScaleObject();
+            UpdateTouchPose();
+        }
     }
 
     void ScaleObject()
@@ -172,5 +198,51 @@ public class SceneObjectManager : MonoBehaviour
         m_Size = bounds.size;
         Debug.Log(m_Size);
         return m_Size;
+    }
+
+    private void UpdateTouchPose()
+    {
+
+        if (Input.touchCount > 0)
+        {
+            // PlaceObject();
+            if (!IsPointerOverUIObject())
+            {
+                // ARRaycast from touch position
+                var hits = new List<ARRaycastHit>();
+                arRaycastManager.Raycast(Input.touches[0].position, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
+                touchPoseIsValid = (hits.Count > 0);
+
+                if (touchPoseIsValid)
+                {
+                    touchPose = hits[0].pose;
+                    touchPos = touchPose.position;
+                   /* currObj.transform.position = touchPose.position;
+                    currObj.transform.LookAt(Camera.main.transform);
+                    currObj.transform.eulerAngles = new Vector3(0, currObj.transform.eulerAngles.y + 180f, 0);*/
+                }
+            }
+        }
+    }
+
+
+    public static bool IsPointerOverUIObject()
+    {
+        // Check if there is a touch
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            // Check if finger is over a UI element
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                Debug.Log("Touched the UI");
+                isTouchOverUI = true;
+            }
+            else
+            {
+                isTouchOverUI = false;
+            }
+        }
+
+        return isTouchOverUI;
     }
 }
