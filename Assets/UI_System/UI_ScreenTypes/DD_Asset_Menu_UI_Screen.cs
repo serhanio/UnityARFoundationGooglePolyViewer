@@ -123,7 +123,13 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
         poly_api.PolyAssetSearchQuery(search_input_field.text);
     }
 
-    public void ImportAssetOnClick()     {         Debug.Log("You have clicked the " + EventSystem.current.currentSelectedGameObject.name + " button!");         string modelName = EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;         Debug.Log("MODEL NAME: " + modelName);         Debug.Log(EventSystem.current.currentSelectedGameObject.name.Remove(0, 7));         poly_api.GetSingleAssetWithID(EventSystem.current.currentSelectedGameObject.name.Remove(0, 7));
+    public void ImportAssetOnClick()
+    {
+        Debug.Log("You have clicked the " + EventSystem.current.currentSelectedGameObject.name + " button!");
+        string modelName = EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+        Debug.Log("MODEL NAME: " + modelName);
+        Debug.Log(EventSystem.current.currentSelectedGameObject.name.Remove(0, 7));
+        poly_api.GetSingleAssetWithID(EventSystem.current.currentSelectedGameObject.name.Remove(0, 7));
         //GameObject hitObject = Instantiate(Resources.Load<GameObject>(modelName));
         //ARHitControls.m_HitTransform = hitObject.transform;
         //ui_system.SwitchScreen(camera_screen);
@@ -152,7 +158,7 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
         }
     }
 
-    void SetFeaturedArtistText()
+    public void SetFeaturedArtistText()
     {
         featured_artist_text.text = "Artist: " + poly_api.featured_artist_name;
     }
