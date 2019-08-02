@@ -23,7 +23,7 @@ public class DD_PolyAR : MonoBehaviour {
     public UnityEvent onPolyAssetsLoaded = new UnityEvent();
     public UnityEvent onPolyThumbLoaded = new UnityEvent();
     public UnityEvent onAssetImported = new UnityEvent();
-    public string[] display_names;
+    public List<string> artist_names;
     public string featured_artist_name;
     public float distMultiplier = 1.5f;
     /* [SerializeField] ObjectControls objectManager; */
@@ -178,6 +178,7 @@ public class DD_PolyAR : MonoBehaviour {
         importedObject.transform.eulerAngles = new Vector3(0, importedObject.transform.eulerAngles.y + 180f, 0);
 
         featured_artist_name = asset.authorName;
+        artist_names.Add(featured_artist_name);
 
         if (onAssetImported != null)
         {
