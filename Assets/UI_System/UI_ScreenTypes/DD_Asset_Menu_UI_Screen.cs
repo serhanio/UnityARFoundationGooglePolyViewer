@@ -58,7 +58,7 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
         poly_api.onAssetImported.AddListener(SetFeaturedArtistText);
 
         objectManager = FindObjectOfType<SceneObjectManager>();
-        delete_button.onClick.AddListener(delegate { objectManager.RemoveObjectFromScene(SceneObjectManager.currObj); } );
+        //delete_button.onClick.AddListener(delegate { objectManager.RemoveObjectFromScene(SceneObjectManager.currObj); } );
     }
 
     public void InstantiatePanels()

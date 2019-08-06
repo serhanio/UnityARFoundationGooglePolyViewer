@@ -144,7 +144,6 @@ MonoBehaviour:
   placementIndicator: {fileID: 426706276}
   arRaycastManager: {fileID: 1260358314}
   debugText: {fileID: 0}
-  loadedObj: {fileID: 0}
 --- !u!4 &28445200
 Transform:
   m_ObjectHideFlags: 0
@@ -431,6 +430,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 108598523}
+        m_MethodName: RemoveObjectFromScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 108598523}
         m_MethodName: AddObjectToScene
         m_Mode: 1
         m_Arguments:
@@ -443,7 +453,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  display_names: []
+  artist_names: []
   featured_artist_name: 
   distMultiplier: 1.25
   searchKeyword: tree
@@ -931,12 +941,12 @@ PrefabInstance:
     - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
@@ -956,7 +966,7 @@ PrefabInstance:
     - target: {fileID: 764924790896368272, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1758353612085411945, guid: b3d5f6c03bc7b4798bdd64ba3466b7f3,
         type: 3}

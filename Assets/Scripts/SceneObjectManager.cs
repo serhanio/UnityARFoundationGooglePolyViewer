@@ -52,7 +52,7 @@ public class SceneObjectManager : MonoBehaviour
         objectsInScene.Add(google_poly_api.importedObject);
     }
 
-    public void RemoveObjectFromScene(GameObject obj)
+    public void RemoveObjectFromScene()
     {
         if (currObj)
         {
@@ -83,7 +83,6 @@ public class SceneObjectManager : MonoBehaviour
     {
         currObj = obj;
         SetObjectPivot();
-        arTap.loadedObj = currObj;
 
         if (onObjectSelected != null)
         {
