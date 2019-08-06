@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
 
 public class DragOnTouchAR : MonoBehaviour
 {
     public SceneObjectManager objectManager;
+    public UnityEvent onMouseDrag;
 
     private void Start()
     {
+        Debug.Log(this.name);
         objectManager = FindObjectOfType<SceneObjectManager>();
     }
 
@@ -17,24 +20,28 @@ public class DragOnTouchAR : MonoBehaviour
     {
         if (!SceneObjectManager.IsPointerOverUIObject())
         {
-            Debug.Log("Dragging object " + this.transform.parent.name);
-
-            // set current gameObject to drag
-            if(SceneObjectManager.currObj)
-            Debug.Log("Current GameObject " + SceneObjectManager.currObj.name);
-            Debug.Log("Parent GameObject " + GetRootGameObject(this.transform.gameObject).transform.name);
-
             if (SceneObjectManager.currObj != GetRootGameObject(this.transform.gameObject))
             {
+                Debug.Log("Dragging object " + this.transform.parent.name);
+
+                // set current gameObject to drag
+                if (SceneObjectManager.currObj)
+                {
+                    Debug.Log("Current GameObject " + SceneObjectManager.currObj.name);
+                    Debug.Log("Parent GameObject " + GetRootGameObject(this.transform.gameObject).transform.name);
+                }
+
+
                 // set selected object
                 objectManager.SetSelectedObject(GetRootGameObject(this.transform.gameObject));
-            }
+          
 
-            if (SceneObjectManager.touchPoseIsValid)
-            {
-                SceneObjectManager.currObj.transform.position = SceneObjectManager.touchPos;
-                SceneObjectManager.currObj.transform.LookAt(Camera.main.transform);
-                SceneObjectManager.currObj.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y + 180f, 0);
+                if (SceneObjectManager.touchPoseIsValid)
+                {
+                    SceneObjectManager.currObj.transform.position = SceneObjectManager.touchPos;
+                    SceneObjectManager.currObj.transform.LookAt(Camera.main.transform);
+                    SceneObjectManager.currObj.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y + 180f, 0);
+                }
             }
         }
     }
@@ -47,6 +54,7 @@ public class DragOnTouchAR : MonoBehaviour
         // while parent exists
         while(go.transform.parent != null)
         {
+           // Debug.Log(go.transform.name);
             go = go.transform.parent.gameObject;
         }
 

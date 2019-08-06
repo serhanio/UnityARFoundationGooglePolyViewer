@@ -32,6 +32,7 @@ public class SceneObjectManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(this.name);
         arTap = FindObjectOfType<ARPlacementIndicator>();
         google_poly_api = FindObjectOfType<DD_PolyAR>();
 
@@ -45,8 +46,10 @@ public class SceneObjectManager : MonoBehaviour
     {
         //RemoveObjectFromScene(currObj);
 
+        // Set selected object to
+        Debug.Log(google_poly_api.importedObject);
         SetSelectedObject(google_poly_api.importedObject);
-        objectsInScene.Add( currObj );
+        objectsInScene.Add(google_poly_api.importedObject);
     }
 
     public void RemoveObjectFromScene(GameObject obj)
@@ -60,11 +63,16 @@ public class SceneObjectManager : MonoBehaviour
                     Destroy(pivot.GetChild(i).gameObject);
                 }
             }
+            
+            objectsInScene.IndexOf(currObj.transform.GetChild(0).gameObject);
+            objectsInScene.Remove(currObj.transform.GetChild(0).gameObject);
 
-            currObj = null;
-            objectsInScene.Remove(obj);
+            if (objectsInScene.Count > 0)
+                currObj = objectsInScene[objectsInScene.Count-1];
+            else
+                currObj = null;
 
-            if(onObjectRemoved != null)
+            if (onObjectRemoved != null)
             {
                 onObjectRemoved.Invoke();
             }

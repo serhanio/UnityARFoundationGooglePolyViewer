@@ -19,6 +19,7 @@ public class ARCameraPlatformBackground : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(this.name);
         ARCameraBackground arcbg = GetComponent<ARCameraBackground>();
         arcbg.useCustomMaterial = true;
 #if UNITY_IOS

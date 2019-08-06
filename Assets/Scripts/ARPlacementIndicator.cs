@@ -18,12 +18,10 @@ public class ARPlacementIndicator : MonoBehaviour
     private bool placementPoseIsValid = false;
 
     public Text debugText;
-    public GameObject loadedObj;
-
-
 
     void Start()
     {
+        Debug.Log(this.name);
         arOrigin = FindObjectOfType<ARSessionOrigin>();
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
     }

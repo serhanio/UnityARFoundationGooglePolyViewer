@@ -38,13 +38,21 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
 
     #region Helper Methods
 
+    /*
+    This method communicates with the DD_PolyAR.cs script to query 3d models from Google's poly api
+         */
+
     public void Awake()
     {
+        Debug.Log(this.name);
         parent = GameObject.FindWithTag("asset_panels");
         container = parent.GetComponent<RectTransform>();
 
+        // get panel asset size from prefab
         panelSize = new Vector2(assets_panel_prefab.GetComponent<RectTransform>().sizeDelta.x, assets_panel_prefab.GetComponent<RectTransform>().sizeDelta.y);
         Debug.Log("Panel Size " + panelSize.ToString());
+
+        // Add listener to search button
         search_button.onClick.AddListener(SearchButtonQuery);
 
         poly_api.onAssetImported.AddListener(SetFeaturedArtistText);

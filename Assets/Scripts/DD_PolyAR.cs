@@ -40,6 +40,7 @@ public class DD_PolyAR : MonoBehaviour {
 
     void Start () 
     {
+        Debug.Log(this.name);
         m_cameraTransform = GameObject.FindWithTag("MainCamera").transform;
 
         asset_id_name_list = new List<KeyValuePair<string, string>>();
@@ -174,6 +175,8 @@ public class DD_PolyAR : MonoBehaviour {
         result.Value.gameObject.transform.position = objPosition;
 
         importedObject = result.Value.gameObject;
+        importedObject.name = asset.displayName;
+
         importedObject.transform.LookAt(Camera.main.transform);
         importedObject.transform.eulerAngles = new Vector3(0, importedObject.transform.eulerAngles.y + 180f, 0);
 
