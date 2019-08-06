@@ -20,13 +20,18 @@ public class DragOnTouchAR : MonoBehaviour
     {
         if (!SceneObjectManager.IsPointerOverUIObject())
         {
-            Debug.Log("Mouse Drag");
+            Debug.Log("Mouse Drag " + SceneObjectManager.currObj.name);
             // if current object is not same as touched object
             if (SceneObjectManager.currObj != GetRootGameObject(this.transform.gameObject))
             {
                 Debug.Log("Dragging object " + this.transform.parent.name);
 
                 // set current gameObject to dragged object
+                objectManager.SetSelectedObject(GetRootGameObject(this.transform.gameObject));
+            }
+
+            if(SceneObjectManager.currObj == null)
+            {
                 objectManager.SetSelectedObject(GetRootGameObject(this.transform.gameObject));
             }
 

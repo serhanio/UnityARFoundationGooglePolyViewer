@@ -67,10 +67,10 @@ public class SceneObjectManager : MonoBehaviour
             objectsInScene.IndexOf(currObj.transform.GetChild(0).gameObject);
             objectsInScene.Remove(currObj.transform.GetChild(0).gameObject);
 
-            if (objectsInScene.Count > 0)
+            /*if (objectsInScene.Count > 0)
                 currObj = objectsInScene[objectsInScene.Count-1];
             else
-                currObj = null;
+                currObj = null;*/
 
             if (onObjectRemoved != null)
             {
