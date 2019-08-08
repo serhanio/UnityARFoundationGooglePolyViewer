@@ -21,8 +21,9 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
     public Text featured_artist_text;
 
 
-    public Button search_button, assets_menu_button, delete_button;
+    public Button search_button, assets_menu_button, delete_button, vr_toggle_button;
     public InputField search_input_field;
+    public Sprite ar_toggle_image, vr_toggle_image;
 
     public DD_PolyAR poly_api;
 
@@ -59,6 +60,11 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
 
         objectManager = FindObjectOfType<SceneObjectManager>();
         //delete_button.onClick.AddListener(delegate { objectManager.RemoveObjectFromScene(SceneObjectManager.currObj); } );
+        if (ar_toggle_image != null)
+        {
+            vr_toggle_button.image.sprite = ar_toggle_image;
+            vr_toggle_button.onClick.AddListener(ToggleVRImage);
+        }
     }
 
     public void InstantiatePanels()
@@ -169,6 +175,12 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
     public void SetFeaturedArtistText()
     {
         featured_artist_text.text = "Artist: " + poly_api.featured_artist_name;
+    }
+
+    void ToggleVRImage()
+    {
+        vr_toggle_button.image.sprite = (ar_toggle_image == vr_toggle_button.image.sprite) ? vr_toggle_button.image.sprite = vr_toggle_image : vr_toggle_button.image.sprite = ar_toggle_image;
+        //Debug.Log("toggle " + vr_toggle_button.image.sprite.name);
     }
 
     #endregion

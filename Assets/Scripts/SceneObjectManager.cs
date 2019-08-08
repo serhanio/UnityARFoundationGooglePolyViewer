@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class SceneObjectManager : MonoBehaviour
 {
     public static GameObject currObj;
+    public GameObject backdrop_sphere;
     public List<GameObject> objectsInScene;
     public ARPlacementIndicator arTap;
     public DD_PolyAR google_poly_api;
@@ -40,6 +41,9 @@ public class SceneObjectManager : MonoBehaviour
         pivot.name = "pivot";
 
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
+
+        if (backdrop_sphere)
+            backdrop_sphere.SetActive(false);
     }
 
     public void AddObjectToScene()
@@ -259,6 +263,15 @@ public class SceneObjectManager : MonoBehaviour
                     currObj.transform.eulerAngles = new Vector3(0, currObj.transform.eulerAngles.y + 180f, 0);*/
                 }
             }
+        }
+    }
+
+    // switches between a camera pass-through (AR) to a virtual backdrop (VR)
+    public void ToggleVRBackdrop()
+    {
+        if (backdrop_sphere != null)
+        {
+            backdrop_sphere.SetActive(!backdrop_sphere.activeInHierarchy);
         }
     }
 
