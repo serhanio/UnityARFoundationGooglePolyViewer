@@ -59,6 +59,7 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
         poly_api.onAssetImported.AddListener(SetFeaturedArtistText);
 
         objectManager = FindObjectOfType<SceneObjectManager>();
+        objectManager.onObjectSelected.AddListener(SetFeaturedArtistText);
         //delete_button.onClick.AddListener(delegate { objectManager.RemoveObjectFromScene(SceneObjectManager.currObj); } );
         if (ar_toggle_image != null)
         {
@@ -174,7 +175,8 @@ public class DD_Asset_Menu_UI_Screen : MonoBehaviour
 
     public void SetFeaturedArtistText()
     {
-        featured_artist_text.text = "Artist: " + poly_api.featured_artist_name;
+        if(featured_artist_text != null)
+            featured_artist_text.text = "Artist: " + poly_api.featured_artist_name;
     }
 
     void ToggleVRImage()

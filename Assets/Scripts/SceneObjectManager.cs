@@ -91,6 +91,7 @@ public class SceneObjectManager : MonoBehaviour
         if (onObjectSelected != null)
         {
             onObjectSelected.Invoke();
+            Debug.Log(currObj.name + " selected");
         }
     }
 
